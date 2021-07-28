@@ -10,7 +10,6 @@ export default function Auth({setIsLoggedIn}: AuthProps) {
     let [authMethod, setAuthMethod] = useState("signup")
 
     let attemptLogin = async () => {
-
     }
 
     return (
@@ -19,6 +18,7 @@ export default function Auth({setIsLoggedIn}: AuthProps) {
             <input placeholder="password" onChange={e => setPassword(e.target.value)} />
             <button onClick={(e) => {
                 e.preventDefault()
+                attemptLogin()
             }}>Submit</button>
         </form>
     )

@@ -1,1 +1,4 @@
-hey
+- Get cors working on server
+- end to end develop auth.
+- Minimum working auth fast
+- Get to the meaty juicy parts 
