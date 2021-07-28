@@ -1,12 +1,14 @@
-import React from 'react';
+import {useState} from 'react';
 import './styles/App.css';
+import Auth from './components/Auth'
 
-function App() {
+export default function App() {
+  let [isLoggedIn, setIsLoggedIn] = useState(false)
+
   return (
     <div className="App">
-      hello world
+      {isLoggedIn ? 'logged in' : <Auth  setIsLoggedIn={setIsLoggedIn} /> }
     </div>
   );
 }
 
-export default App;
