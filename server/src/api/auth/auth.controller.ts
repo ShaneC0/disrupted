@@ -5,6 +5,7 @@ const signin = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const signup = (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.body)
     res.json('Signup function')
 }
 

@@ -1,4 +1,6 @@
 import {Dispatch, SetStateAction, useState} from "react"
+import axios from "axios"
+import API_ROUTE from '../constants'
 
 interface AuthProps {
     setIsLoggedIn: Dispatch<SetStateAction<boolean>>
@@ -10,6 +12,14 @@ export default function Auth({setIsLoggedIn}: AuthProps) {
     let [authMethod, setAuthMethod] = useState("signup")
 
     let attemptLogin = async () => {
+       axios.post(`${API_ROUTE}/auth/${authMethod}`, {
+           username,
+           password
+        }).then(function (response) {
+                console.log(response);
+        }).catch(function (error) {
+                console.log(error);
+        }); 
     }
 
     return (
