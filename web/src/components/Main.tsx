@@ -1,15 +1,35 @@
 import { useState, useEffect } from "react"
+import axios from "axios"
+import API_URL from "../constants"
 
-export default function Main() {
-    let [user, setUser] = useState(null)
-    let [servers, setServers] = useState(null)
+interface IMainProps {
+    userData: {
+        id: string,
+        username: string
+    }
+}
 
-    
+export default function Main({userData}: IMainProps) {
 
+    let [servers, setServers] = useState([])
+
+    useEffect(() => {
+        axios.get(`${API_URL}/api/server/user`, {
+            headers: {
+                'authorization': `Bearer ${localStorage.token}`
+            }
+        }).then(response => {
+            if(response.data.servers) {
+                setServers(response.data.servers)
+            }
+        }).catch(error => {
+            console.error(error)
+        })
+    }, [])
 
     return (
         <div>
-            yo whatup
+            yo
         </div>
     )
 }

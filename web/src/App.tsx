@@ -5,28 +5,33 @@ import Main from './components/Main'
 import axios from "axios"
 import API_URL from "./constants"
 
-
 export default function App() {
   let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [user, setUser] = useState({})
+  let [userData, setUserData] = useState({id: "", username: ""})
 
   useEffect(() => {
     if(localStorage.token) {
-      axios.get(`${API_URL}`)
+      axios.get(`${API_URL}`, {
+        headers: {
+          'authorization': `Bearer ${localStorage.token}`
+        }
+      })
           .then(response => {
-            if(response.data.user) {
-              setUser(response.data.user)
+            let {user} = response.data
+            if(user) {
+              setUserData(user)
               setIsLoggedIn(true)
             }
-          }).catch(error => {
+          })
+          .catch(error => {
               console.error(error)
           })
     }
   }, [])
 
   return (
-    <div className="App">
-      {isLoggedIn ? <Main /> : <Auth  setIsLoggedIn={setIsLoggedIn} /> }
+    <div id="App">
+      {isLoggedIn ? <Main userData={userData} /> : <Auth  setIsLoggedIn={setIsLoggedIn} /> }
     </div>
   );
 }

@@ -2,5 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background: linear-gradient(to right, #cbd1d5, #e3edf7);
+  font-family: 'Poppins', sans-serif
 }
 
