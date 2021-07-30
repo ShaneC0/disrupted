@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express"
+import verifyToken from "../middleware/VerifyToken";
 import findServersByUserId from "./server.controller";
 
 const router: Router = Router();
@@ -15,6 +16,6 @@ const router: Router = Router();
 
 router.get('/', (req: Request, res: Response): Response => res.json('server route'))
 
-router.get('/user/:id', findServersByUserId)
+router.get('/user', findServersByUserId)
 
 export default router

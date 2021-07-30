@@ -16,7 +16,14 @@ app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 
-app.get('/', verifyToken, (req: Request, res: Response): Response => res.json('Hello World'));
+app.get('/', verifyToken, (req: Request, res: Response): Response => {
+  if(req.body.user) {
+    return res.json({user: req.body.user})
+  } else {
+    return res.json('Hello World')
+  }
+});
+
 app.use('/api', apiRouter);
 
 app.use(notFound)
