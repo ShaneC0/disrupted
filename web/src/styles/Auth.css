@@ -20,7 +20,14 @@ form>* {
     margin: 5% 0 5% 0;
 }
 
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
 
+label {
+    color: purple;
+}
 
 input {
     border: none;
@@ -40,14 +47,26 @@ input::placeholder {
     opacity: 1
 }
 
-button {
+.submit {
     width: 75%;
     border: none;
-    background: linear-gradient(to right, #f953c6, #b91d73);
+    background: linear-gradient(to right, #b934f7, #822198);
     color: white;
     border-radius: 5px;
     align-self: center;
     padding: 4% 1% 4% 1%; 
+}
+
+.switchtag {
+    font-size: 12px;
+    align-self: center;
+}
+
+.switchtag>button {
+    background: transparent;
+    color: purple;
+    border: none;
+    cursor: pointer;
 }
 
 p {
@@ -57,10 +76,15 @@ p {
 
 .header-1 {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .header-2 {
-    font-size: 16;
-    font-weight: 200;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.error-text {
+    color: crimson;
+    font-size: 12px;
 }

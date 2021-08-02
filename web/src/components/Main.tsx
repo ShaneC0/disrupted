@@ -28,7 +28,7 @@ export default function Main({userData}: IMainProps) {
     }, [])
 
     return (
-        <div>
+        <div id="Main">
             yo
         </div>
     )

@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import './styles/App.css';
 import Auth from './components/Auth'
 import Main from './components/Main'
 import axios from "axios"
