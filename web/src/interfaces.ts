@@ -8,4 +8,14 @@ interface IValidationError {
     }
 }
 
-export default IValidationError
+interface IServerError {
+    message: string,
+    stack: string
+}
+
+interface IServer {
+    id: string,
+    name: string
+}
+
+export type {IValidationError, IServerError, IServer}

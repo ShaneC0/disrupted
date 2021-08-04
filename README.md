@@ -1,8 +1,12 @@
+Client
 - client side validation?
-- error handling
+- Grid layout on Main
+- Server component
+- color pallet 
+
+Server
 - auth middleware
-
-- Server sets user on request by jwt - This is a problem
-- Server then routes request
-
-need colors
+- Roles? 
+- Create server
+  - Add creating user to members
+  - Add a general channel by default

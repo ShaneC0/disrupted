@@ -1,8 +1,8 @@
 import {Dispatch, SetStateAction, useState} from "react"
 import axios from "axios"
-import '../styles/Auth.css'
-import API_ROUTE from '../constants'
-import IValidationError from "../interfaces"
+import '../../styles/Auth.css'
+import API_ROUTE from '../../constants'
+import {IValidationError, IServerError} from "../../interfaces"
 import Input from './Input'
 
 interface IAuthProps {
@@ -14,7 +14,7 @@ export default function Auth({setIsLoggedIn}: IAuthProps) {
     let [password, setPassword] = useState("");
     let [authMethod, setAuthMethod] = useState("signup")
     let [validationErrors, setValidationErrors] = useState<Array<IValidationError>>([])
-    let [serverErrors, setServerErrors] = useState([])
+    let [serverError, setServerError] = useState<IServerError>()
 
     let attemptLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
        e.preventDefault();
@@ -27,9 +27,10 @@ export default function Auth({setIsLoggedIn}: IAuthProps) {
                 setIsLoggedIn(true)
             }
         }).catch(error => {
-            console.log(error.response.data)
             if('validationErrors' in error.response.data) {
                 setValidationErrors(error.response.data.validationErrors)
+            } else {
+                setServerError(error.response.data)
             }
         })
     }
@@ -43,6 +44,13 @@ export default function Auth({setIsLoggedIn}: IAuthProps) {
         <p className="switchtag">Already have an account? <button onClick={e => switchAuthMethod(e)} className="switch">Log In</button></p> : 
         <p className="switchtag">Don't have an account? <button onClick={e => switchAuthMethod(e)} className="switch">Get Started</button></p> 
 
+    let serverErrorMap = () => {
+        if(serverError) {
+            return <p className="error-text">{serverError.message.charAt(0) + serverError.message.slice(1)}</p>
+        } else {
+            return null
+        }
+    }
 
     return (
         <div id="Auth">
@@ -53,6 +61,8 @@ export default function Auth({setIsLoggedIn}: IAuthProps) {
                 <p className="header-2">
                     join us in the future of connectivity. 
                 </p>
+
+                {serverErrorMap()}
 
                 <Input 
                     element="username" 

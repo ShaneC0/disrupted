@@ -1,12 +1,12 @@
 import { Request, Response, Router } from "express"
-import verifyToken from "../middleware/VerifyToken";
-import findServersByUserId from "./server.controller";
+import {findServersByUserId, joinServer, createServer} from "./server.controller";
 
 const router: Router = Router();
 
 /*
     What routes do we need for the server?
      - Fetch a users servers
+     - Fetch a user with all relations
      - Create a new server
      - Join a server
      - Leave a server
@@ -17,5 +17,6 @@ const router: Router = Router();
 router.get('/', (req: Request, res: Response): Response => res.json('server route'))
 
 router.get('/user', findServersByUserId)
+
 
 export default router

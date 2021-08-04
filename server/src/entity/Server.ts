@@ -1,6 +1,7 @@
-import {Column, Entity, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { Length } from "class-validator";
 import { User } from "./User";
+import { Channel } from "./Channel";
 
 @Entity()
 export class Server {
@@ -11,6 +12,9 @@ export class Server {
     @Column()
     @Length(2, 20)
     name: string
+
+    @OneToMany(() => Channel, channel => channel.server)
+    channels: Channel[]
 
     @ManyToMany(() => User, user => user.servers)
     users: User[]

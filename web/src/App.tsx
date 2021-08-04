@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import Auth from './components/Auth'
-import Main from './components/Main'
+import Auth from './components/auth/Auth'
+import Main from './components/main/Main'
 import axios from "axios"
 import API_URL from "./constants"
 
