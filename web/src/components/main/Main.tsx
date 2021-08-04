@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import API_URL from "../../constants";
-import { IServer } from "../../interfaces";
+import { IServer, IUser } from "../../interfaces";
 import ServerSelector from "./ServerSelector";
-import Server from "../server/Server"
+import Server from "../server/Server";
 import "../../styles/Main.css";
 
 interface IMainProps {
-  userData: {
-    id: string;
-    username: string;
-  };
+  user: IUser
 }
 
-export default function Main({ userData }: IMainProps) {
+export default function Main({ user }: IMainProps) {
   let [servers, setServers] = useState<Array<IServer>>([]);
   let [currentServer, setCurrentServer] = useState<IServer>();
 
@@ -34,10 +31,16 @@ export default function Main({ userData }: IMainProps) {
       });
   }, []);
 
+  let content = currentServer ? (
+    <Server server={currentServer} />
+  ) : (
+    <h1>No server selected</h1>
+  );
+
   return (
     <div id="Main">
       <ServerSelector servers={servers} setCurrentServer={setCurrentServer} />
-      <Server />
+      {content}
     </div>
   );
 }

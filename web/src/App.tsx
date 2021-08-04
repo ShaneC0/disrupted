@@ -3,10 +3,11 @@ import Auth from './components/auth/Auth'
 import Main from './components/main/Main'
 import axios from "axios"
 import API_URL from "./constants"
+import { IUser } from './interfaces';
 
 export default function App() {
   let [isLoggedIn, setIsLoggedIn] = useState(false)
-  let [userData, setUserData] = useState({id: "", username: ""})
+  let [user, setUser] = useState<IUser>({id: "", username: ""})
 
   useEffect(() => {
     if(localStorage.token) {
@@ -18,7 +19,7 @@ export default function App() {
           .then(response => {
             let {user} = response.data
             if(user) {
-              setUserData(user)
+              setUser(user)
               setIsLoggedIn(true)
             }
           })
@@ -30,7 +31,7 @@ export default function App() {
 
   return (
     <div id="App">
-      {isLoggedIn ? <Main userData={userData} /> : <Auth  setIsLoggedIn={setIsLoggedIn} /> }
+      {isLoggedIn ? <Main user={user} /> : <Auth  setIsLoggedIn={setIsLoggedIn} /> }
     </div>
   );
 }
