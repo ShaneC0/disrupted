@@ -3,6 +3,7 @@ Client
 - Grid layout on Main
 - Server component
 - color pallet 
+- Re-request channels when server is switched
 
 Server
 - auth middleware

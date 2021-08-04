@@ -1,5 +1,5 @@
-import { Request, Response, Router } from "express"
-import {findServersByUserId, joinServer, createServer} from "./server.controller";
+import { Request, Response, Router } from "express";
+import { findServersByUserId } from "./server.controller";
 
 const router: Router = Router();
 
@@ -14,9 +14,6 @@ const router: Router = Router();
      - Edit a server
 */
 
-router.get('/', (req: Request, res: Response): Response => res.json('server route'))
+router.get("/user", findServersByUserId);
 
-router.get('/user', findServersByUserId)
-
-
-export default router
+export default router;

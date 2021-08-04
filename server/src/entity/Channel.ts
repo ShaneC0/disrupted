@@ -1,7 +1,8 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { Length } from "class-validator";
 import { User } from "./User";
 import { Server } from "./Server";
+import { Message } from "./Message";
 
 @Entity()
 export class Channel {
@@ -15,4 +16,7 @@ export class Channel {
 
     @ManyToOne(() => Server, server => server.channels)
     server: Server
+
+    @OneToMany(() => Message, message => message.channel)
+    messages: Message[]
 }

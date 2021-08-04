@@ -1,6 +1,7 @@
-import {Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable} from "typeorm";
+import {Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany} from "typeorm";
 import { Length } from "class-validator";
 import {Server} from './Server'
+import { Message } from "./Message";
 
 @Entity()
 export class User {
@@ -15,6 +16,9 @@ export class User {
     @Column()
     @Length(5)
     password: string;
+
+    @OneToMany(() => Message, message => message.user)
+    messages: Message[]
 
     @ManyToMany(() => Server, server => server.users)
     @JoinTable()
