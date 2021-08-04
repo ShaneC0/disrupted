@@ -1,23 +1,51 @@
-#server-selector {
-    background: #313345;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 3vw;
+#Main {
+  display: grid;
+  grid-template-columns: 3vw auto;
+  grid-template-rows: 100vh;
+}
+
+#Server-selector {
+  background: #313345;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1/2;
 }
 
 .server-button {
-    border: none;
-    width: 30px;
-    height: 30px;
-    margin: 25% 0 0 0;
-    border-radius: 6px;
-    color: gray;
-    cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin: 25% 0 0 0;
+  border-radius: 6px;
+  background: #1d1d2a;
+  color: white;
+  cursor: pointer;
 }
 
 .server-button:hover {
-    outline: 2px solid white;
-    outline-offset: 2px;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+#Server {
+  grid-column: 2/3;
+  display: grid;
+  grid-template-rows: 100vh;
+  grid-template-columns: 15vw auto;
+}
+
+#Channel-selector {
+  background: #242734;
+  grid-column: 1/2;
+}
+
+.channel-button {
+    background: red;
+    color: white
+}
+
+#Channel {
+  background: #1d1d2a;
+  grid-column: 2/3;
 }

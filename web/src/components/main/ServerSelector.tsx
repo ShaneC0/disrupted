@@ -11,12 +11,12 @@ export default function ServerSelector({
   setCurrentServer,
 }: IServerSelectorProps) {
   return (
-    <div id="server-selector">
+    <div id="Server-selector">
       {servers.map((s, sIdx) => (
         <button
           className="server-button"
           key={sIdx}
-          onClick={(e) => {
+          onClick={() => {
             setCurrentServer(s);
           }}
         >
