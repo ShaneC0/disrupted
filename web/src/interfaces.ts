@@ -27,4 +27,9 @@ interface IUser {
   username: string;
 }
 
-export type { IValidationError, IServerError, IServer, IChannel, IUser };
+interface IMessage {
+  id: string;
+  text: string;
+}
+
+export type { IValidationError, IServerError, IServer, IChannel, IUser, IMessage };

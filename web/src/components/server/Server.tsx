@@ -3,7 +3,7 @@ import { IChannel, IServer } from "../../interfaces";
 import Channel from "./Channel";
 import API_URL from "../../constants";
 import axios from "axios";
-import ChannelSelector from "./ChannelSelector"
+import ChannelSelector from "./ChannelSelector";
 
 interface IServerProps {
   server: IServer;
@@ -26,7 +26,7 @@ export default function Server({ server }: IServerProps) {
           setCurrentChannel(response.data.channels[0]);
         }
       })
-      .then((error) => {
+      .catch((error) => {
         console.error(error);
       });
   }, [server]);
@@ -37,8 +37,13 @@ export default function Server({ server }: IServerProps) {
     "No Channel Selected"
   );
 
-  return <div id="Server">
-      <ChannelSelector channels={channels} setCurrentChannel={setCurrentChannel} />
+  return (
+    <div id="Server">
+      <ChannelSelector
+        channels={channels}
+        setCurrentChannel={setCurrentChannel}
+      />
       {content}
-  </div>;
+    </div>
+  );
 }

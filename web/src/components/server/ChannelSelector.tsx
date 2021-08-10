@@ -12,15 +12,15 @@ export default function ChannelSelector({
 }: IChannelSelectorProps) {
   return (
     <div id="Channel-selector">
-      {channels.map((channel, channelIdx) => {
+      {channels.map((channel, channelIdx) => (
         <button
           key={channelIdx}
-          className="channel-button"
           onClick={() => setCurrentChannel(channel)}
+          className="channel-button"
         >
           {channel.name}
-        </button>;
-      })}
+        </button>
+      ))}
     </div>
   );
 }

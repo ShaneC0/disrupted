@@ -1,9 +1,15 @@
 Client
 - client side validation?
-- Grid layout on Main
-- Server component
-- color pallet 
-- Re-request channels when server is switched
+- channel component
+- Figure out when to clear errors on auth
+
+What is the channel component?
+  - Map of messages
+  - textbox input for sending
+  - When message sends: 
+    - Send to server
+    - add to state
+    - Send socket
 
 Server
 - auth middleware
@@ -11,3 +17,9 @@ Server
 - Create server
   - Add creating user to members
   - Add a general channel by default
+
+
+MAYBE MAKE A REAL TIME ONLY
+OR WEB SOCKET ONLY CHAT THAT 
+CAPTURES EVENTS LIKE USERS 
+JOINING AND LEAVING
