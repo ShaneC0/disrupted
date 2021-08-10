@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { getRepository } from "typeorm";
+import { Channel } from "../../entity/Channel";
 import { Server } from "../../entity/Server";
 
 const findChannelsByServerId = async (
@@ -9,12 +10,13 @@ const findChannelsByServerId = async (
 ) => {
   let { id } = req.params;
 
-  let serverRepository = getRepository(Server);
+  const channels = await getRepository(Channel)
+    .createQueryBuilder("channel")
+    .where("channel.serverId = :id", { id })
+    .getMany();
 
-  let server = await serverRepository.findOne(id, { relations: ["channels"] });
-
-  if (server) {
-    return res.json({ channels: server.channels });
+  if (channels) {
+    return res.json({ channels });
   } else {
     return next();
   }
