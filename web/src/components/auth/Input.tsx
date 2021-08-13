@@ -21,7 +21,7 @@ export default function Input({
 
     if (label) {
       let displayProp = label.style.display;
-      label.style.display = displayProp == "block" ? "none" : "block";
+      label.style.display = displayProp === "block" ? "none" : "block";
     }
   };
 

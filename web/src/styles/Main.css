@@ -44,14 +44,14 @@
 }
 
 .channel-button {
-    color: white;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #353648;
-    border-radius: 3px;
-    width: 85%;
-    padding: 3% 0 3% 4%;
-    text-align: left;
+  color: white;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #353648;
+  border-radius: 3px;
+  width: 85%;
+  padding: 3% 0 3% 4%;
+  text-align: left;
 }
 
 .channel-button:hover {
@@ -61,4 +61,22 @@
 #Channel {
   background: #1d1d2a;
   grid-column: 2/3;
+  display: grid;
+  grid-template-rows: 90vh auto;
+  grid-template-columns: 100vw;
+}
+
+#message-component {
+  grid-row: 1/2;
+}
+
+.message-item {
+  color: white;
+  border-bottom: 1px solid #353648;
+}
+
+#input-component {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  background: #313345;
 }

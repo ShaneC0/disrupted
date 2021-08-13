@@ -46,7 +46,7 @@ export default function Auth({ setIsLoggedIn }: IAuthProps) {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    setAuthMethod(authMethod == "signup" ? "signin" : "signup");
+    setAuthMethod(authMethod === "signup" ? "signin" : "signup");
   };
 
   let switchTag =
@@ -105,7 +105,7 @@ export default function Auth({ setIsLoggedIn }: IAuthProps) {
         />
 
         <button className="submit" onClick={(e) => attemptLogin(e)}>
-          {authMethod == "signup" ? "Get Started" : "Log In"}
+          {authMethod === "signup" ? "Get Started" : "Log In"}
         </button>
 
         {switchTag}

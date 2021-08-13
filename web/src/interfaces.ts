@@ -30,6 +30,7 @@ interface IUser {
 interface IMessage {
   id: string;
   text: string;
+  user: IUser
 }
 
 export type { IValidationError, IServerError, IServer, IChannel, IUser, IMessage };

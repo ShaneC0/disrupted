@@ -1,16 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import API_URL from "../../constants";
-import { IServer, IUser } from "../../interfaces";
+import { IServer } from "../../interfaces";
 import ServerSelector from "./ServerSelector";
 import Server from "../server/Server";
 import "../../styles/Main.css";
 
-interface IMainProps {
-  user: IUser
-}
-
-export default function Main({ user }: IMainProps) {
+export default function Main() {
   let [servers, setServers] = useState<Array<IServer>>([]);
   let [currentServer, setCurrentServer] = useState<IServer>();
 
