@@ -12,6 +12,7 @@ const findMessagesByChannelId = async (
   const messages = await getRepository(Message)
     .createQueryBuilder("message")
     .where("message.channelId = :id", { id })
+    .leftJoinAndSelect("message.user", "user")
     .getMany();
 
   if (messages) {
